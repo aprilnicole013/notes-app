@@ -26,9 +26,9 @@ function addNewNote(text = '') {
                 <i class="fas fa-trash-alt"></i>
             </button>
         </div>
-            <div class="main hidden">
+            <div class="main ${text ? '' : 'hidden'}">
             </div>
-            <textarea>
+            <textarea class=${text ? 'hidden': '' }>
             </textarea>
         </div>  `
 
@@ -40,6 +40,7 @@ function addNewNote(text = '') {
     const textArea = note.querySelector('textarea')
 
     textArea.value = text;
+    main.innerHTML = marked(text);
         
     editBtn.addEventListener("click", () => {
         main.classList.toggle("hidden")
@@ -48,6 +49,7 @@ function addNewNote(text = '') {
 
     deleteBtn.addEventListener("click", () => {
         note.remove()
+        updateLS()
     })
         
     textArea.addEventListener('input', (e) => {
