@@ -10,3 +10,8 @@ editBtn.addEventListener("click", () => {
     textArea.classList.toggle("hidden")
 })
 
+textArea.addEventListener('input', (e) => {
+    const { value } = e.target
+    main.innerHTML = marked(value)
+})
+
